@@ -5,8 +5,10 @@ const max_speed = 200
 var vel = Vector2()
 var active = true
 
+var inventory : GridContainer
+
 func _ready():
-	pass
+	inventory = get_node("/root").find_node("Inventory", true, false)
 
 func _physics_process(delta):
 	process_input(delta)
@@ -27,3 +29,6 @@ func process_input(delta):
 
 func process_movement(delta):
 	move_and_slide(vel)
+
+func add_item(item):
+	inventory.add_item(item)
