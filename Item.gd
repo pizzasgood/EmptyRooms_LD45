@@ -6,6 +6,8 @@ export(String, MULTILINE) var description = "No idea what this thing is! Â¯\\_(ã
 
 export(NodePath) var room
 
+onready var room_node = get_node(room)
+
 func _ready():
 	pass
 

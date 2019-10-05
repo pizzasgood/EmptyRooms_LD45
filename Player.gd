@@ -4,11 +4,16 @@ const max_speed = 200
 
 var vel = Vector2()
 var active = true
+var room
 
-var inventory : GridContainer
+onready var main = get_node("/root").find_node("Main", true, false)
+onready var inventory : GridContainer = get_node("/root").find_node("Inventory", true, false)
 
 func _ready():
-	inventory = get_node("/root").find_node("Inventory", true, false)
+	pass
+
+func _process(delta):
+	find_node("Sprite").self_modulate = Color(1, 1, 1, float(main.max_failures - main.failures) / main.max_failures)
 
 func _physics_process(delta):
 	process_input(delta)
@@ -32,3 +37,6 @@ func process_movement(delta):
 
 func add_item(item):
 	inventory.add_item(item)
+
+func get_room():
+	return room

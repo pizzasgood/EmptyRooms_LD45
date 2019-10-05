@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://PauseDialog.gd" type="Script" id=1]
+[ext_resource path="res://sfx/swip.wav" type="AudioStream" id=2]
 
 [node name="PauseDialog" type="CenterContainer"]
 pause_mode = 2
@@ -50,6 +51,10 @@ text = "Music"
 margin_left = 42.0
 margin_right = 118.0
 margin_bottom = 40.0
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -15.0
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Resume" to="." method="_on_Resume_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="toggled" from="PanelContainer/VBoxContainer/HBoxContainer/MusicToggle" to="." method="_on_MusicToggle_toggled"]

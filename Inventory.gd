@@ -1,6 +1,13 @@
 extends PanelContainer
 
 onready var list = find_node("InventoryList")
+onready var snd_pickup : AudioStreamPlayer = find_node("Pickup")
+onready var snd_place : AudioStreamPlayer = find_node("Place")
+onready var snd_error : AudioStreamPlayer = find_node("Error")
+onready var snd_switch : AudioStreamPlayer = find_node("Switch")
+
+onready var player : KinematicBody2D = get_node("/root").find_node("Player", true, false)
+onready var main = get_node("/root").find_node("Main", true, false)
 
 var raw_items = []
 
@@ -11,6 +18,7 @@ func size():
 	return raw_items.size()
 
 func add_item(item):
+	snd_pickup.play()
 	raw_items.append(item)
 	list.add_item(item.name, item.get_texture())
 	list.set_item_tooltip(list.get_item_count()-1, item.description)
@@ -20,12 +28,23 @@ func add_item(item):
 func remove_item(idx):
 	list.remove_item(idx)
 	raw_items.remove(idx)
+	if size() > 0:
+		list.select(clamp(idx, 0, size()-1))
 
 func get_item(idx):
 	return raw_items[idx]
 
 func use_item(idx):
-	print("Don't know how, dawg!")
+	if player.get_room():
+		if player.get_room().name == get_item(idx).room_node.name:
+			snd_place.play()
+			main.apply_item(get_item(idx))
+			remove_item(idx)
+		else:
+			main.wrong_item(get_item(idx))
+			snd_error.play()
+	else:
+		snd_error.play()
 
 func get_current_index():
 	return list.get_selected_items()[0]
@@ -44,10 +63,12 @@ func use_selected():
 
 func select_next():
 	if size() > 0:
+		snd_switch.play()
 		list.select((get_current_index()+1) % size())
 
 func select_prev():
 	if size() > 0:
+		snd_switch.play()
 		list.select((get_current_index()+size()-1) % size())
 
 func _unhandled_input(event):

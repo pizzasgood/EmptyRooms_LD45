@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Inventory.gd" type="Script" id=1]
+[ext_resource path="res://sfx/pickup.wav" type="AudioStream" id=2]
+[ext_resource path="res://sfx/success.wav" type="AudioStream" id=3]
+[ext_resource path="res://sfx/error.wav" type="AudioStream" id=4]
+[ext_resource path="res://sfx/tick.wav" type="AudioStream" id=5]
 
 [node name="Inventory" type="PanelContainer"]
 anchor_left = 1.0
@@ -25,5 +29,23 @@ margin_top = 18.0
 margin_right = 326.0
 margin_bottom = 27.0
 auto_height = true
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="Pickup" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 2 )
+volume_db = -10.0
+
+[node name="Place" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 3 )
+volume_db = -10.0
+
+[node name="Error" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 4 )
+volume_db = -5.0
+
+[node name="Switch" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 5 )
+volume_db = -10.0
 [connection signal="item_activated" from="VBoxContainer/InventoryList" to="." method="_on_InventoryList_item_activated"]
 [connection signal="nothing_selected" from="VBoxContainer/InventoryList" to="." method="_on_InventoryList_nothing_selected"]
