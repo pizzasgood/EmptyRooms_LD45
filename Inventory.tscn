@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Inventory.gd" type="Script" id=1]
-[ext_resource path="res://sfx/pickup.wav" type="AudioStream" id=2]
-[ext_resource path="res://sfx/success.wav" type="AudioStream" id=3]
-[ext_resource path="res://sfx/error.wav" type="AudioStream" id=4]
-[ext_resource path="res://sfx/tick.wav" type="AudioStream" id=5]
+[ext_resource path="res://unknown_item.png" type="Texture" id=2]
+[ext_resource path="res://sfx/pickup.wav" type="AudioStream" id=3]
+[ext_resource path="res://sfx/success.wav" type="AudioStream" id=4]
+[ext_resource path="res://sfx/error.wav" type="AudioStream" id=5]
+[ext_resource path="res://sfx/tick.wav" type="AudioStream" id=6]
 
 [node name="Inventory" type="PanelContainer"]
 anchor_left = 1.0
@@ -23,29 +24,76 @@ margin_bottom = 593.0
 margin_right = 326.0
 margin_bottom = 14.0
 text = "Inventory"
+align = 1
 
 [node name="InventoryList" type="ItemList" parent="VBoxContainer"]
 margin_top = 18.0
 margin_right = 326.0
-margin_bottom = 27.0
-auto_height = true
+margin_bottom = 378.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="ItemDetailPanel" type="PanelContainer" parent="VBoxContainer"]
+margin_top = 382.0
+margin_right = 326.0
+margin_bottom = 562.0
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ItemDetailPanel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 319.0
+margin_bottom = 173.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ItemDetailPanel/HBoxContainer"]
+margin_bottom = 166.0
+
+[node name="ItemIcon" type="TextureRect" parent="VBoxContainer/ItemDetailPanel/HBoxContainer/VBoxContainer"]
+visible = false
+margin_right = 16.0
+margin_bottom = 16.0
+texture = ExtResource( 2 )
+stretch_mode = 4
+
+[node name="ItemName" type="Label" parent="VBoxContainer/ItemDetailPanel/HBoxContainer/VBoxContainer"]
+visible = false
+margin_top = 20.0
+margin_right = 73.0
+margin_bottom = 34.0
+text = "Item Name"
+
+[node name="ItemDescription" type="Label" parent="VBoxContainer/ItemDetailPanel/HBoxContainer"]
+margin_left = 4.0
+margin_right = 312.0
+margin_bottom = 166.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+autowrap = true
+
+[node name="Use" type="Button" parent="VBoxContainer"]
+margin_top = 566.0
+margin_right = 326.0
+margin_bottom = 586.0
+text = "Use Item"
 
 [node name="SFX" type="Node" parent="."]
 
 [node name="Pickup" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource( 2 )
-volume_db = -10.0
-
-[node name="Place" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 3 )
 volume_db = -10.0
 
-[node name="Error" type="AudioStreamPlayer" parent="SFX"]
+[node name="Place" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 4 )
+volume_db = -10.0
+
+[node name="Error" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 5 )
 volume_db = -5.0
 
 [node name="Switch" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource( 5 )
+stream = ExtResource( 6 )
 volume_db = -10.0
 [connection signal="item_activated" from="VBoxContainer/InventoryList" to="." method="_on_InventoryList_item_activated"]
+[connection signal="item_selected" from="VBoxContainer/InventoryList" to="." method="_on_InventoryList_item_selected"]
 [connection signal="nothing_selected" from="VBoxContainer/InventoryList" to="." method="_on_InventoryList_nothing_selected"]
+[connection signal="pressed" from="VBoxContainer/Use" to="." method="_on_Use_pressed"]

@@ -1,6 +1,10 @@
 extends PanelContainer
 
 onready var list = find_node("InventoryList")
+onready var item_icon = find_node("ItemIcon")
+onready var item_name = find_node("ItemName")
+onready var item_description = find_node("ItemDescription")
+
 onready var snd_pickup : AudioStreamPlayer = find_node("Pickup")
 onready var snd_place : AudioStreamPlayer = find_node("Place")
 onready var snd_error : AudioStreamPlayer = find_node("Error")
@@ -23,13 +27,13 @@ func add_item(item):
 	list.add_item(item.name, item.get_texture())
 	list.set_item_tooltip(list.get_item_count()-1, item.description)
 	if list.get_item_count() == 1:
-		list.select(0)
+		select_item(0)
 
 func remove_item(idx):
 	list.remove_item(idx)
 	raw_items.remove(idx)
 	if size() > 0:
-		list.select(clamp(idx, 0, size()-1))
+		select_item(clamp(idx, 0, size()-1))
 
 func get_item(idx):
 	return raw_items[idx]
@@ -63,13 +67,22 @@ func use_selected():
 
 func select_next():
 	if size() > 0:
-		snd_switch.play()
-		list.select((get_current_index()+1) % size())
+		select_item((get_current_index()+1) % size())
 
 func select_prev():
 	if size() > 0:
-		snd_switch.play()
-		list.select((get_current_index()+size()-1) % size())
+		select_item((get_current_index()+size()-1) % size())
+
+func select_item(idx):
+	snd_switch.play()
+	list.select(idx)
+	list.ensure_current_is_visible()
+	item_icon.texture = raw_items[idx].get_texture()
+	item_name.text = raw_items[idx].name
+	item_description.text = raw_items[idx].description
+
+func unfocus():
+	list.release_focus()
 
 func _unhandled_input(event):
 	if event.is_action_pressed("item_next"):
@@ -81,7 +94,13 @@ func _unhandled_input(event):
 
 func _on_InventoryList_nothing_selected():
 	if size() > 0:
-		list.select(0)
+		select_item(0)
 
 func _on_InventoryList_item_activated(index):
 	use_item(index)
+
+func _on_InventoryList_item_selected(index):
+	select_item(index)
+
+func _on_Use_pressed():
+	use_selected()
