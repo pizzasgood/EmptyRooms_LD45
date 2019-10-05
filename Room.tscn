@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://room_material.tres" type="Material" id=1]
+
+[node name="Room" type="CSGCombiner"]
+use_collision = true
+
+[node name="RoomBase" type="CSGCylinder" parent="."]
+radius = 6.0
+sides = 6
+material = ExtResource( 1 )
+
+[node name="RoomCutout" type="CSGCylinder" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+operation = 2
+radius = 5.5
+height = 2.0
+sides = 6
+material = ExtResource( 1 )

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
-[ext_resource path="res://corridor_material.tres" type="Material" id=2]
+[ext_resource path="res://Room.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Corridor.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.501448
@@ -22,18 +23,46 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.604989, 0 )
 
 [node name="Camera" type="Camera" parent="Player/Head"]
 
-[node name="Corridor" type="StaticBody" parent="."]
+[node name="Hub" parent="." instance=ExtResource( 2 )]
 
-[node name="CorridorSubstrate" type="CSGBox" parent="Corridor"]
-use_collision = true
-width = 4.0
-height = 1.0
-depth = 10.0
-material = ExtResource( 2 )
+[node name="Room1" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20 )
 
-[node name="CorridorCutout" type="CSGBox" parent="Corridor/CorridorSubstrate"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
-operation = 2
-width = 3.5
-depth = 11.0
-material = ExtResource( 2 )
+[node name="Corridor" parent="Room1" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
+
+[node name="Room2" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+transform = Transform( 0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -17.3205, 0, 10 )
+
+[node name="Corridor" parent="Room2" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
+
+[node name="Room3" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+transform = Transform( -0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -17.3205, 0, -10 )
+
+[node name="Corridor" parent="Room3" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
+
+[node name="Room4" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -20 )
+
+[node name="Corridor" parent="Room4" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
+
+[node name="Room5" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+transform = Transform( -0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, 17.3205, 0, -10 )
+
+[node name="Corridor" parent="Room5" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
+
+[node name="Room6" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
+transform = Transform( 0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 17.3205, 0, 10 )
+
+[node name="Corridor" parent="Room6" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
