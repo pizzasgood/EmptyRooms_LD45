@@ -1,0 +1,91 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://fonts/caviar_dreams/CaviarDreams_BoldItalic.tres" type="DynamicFont" id=1]
+[ext_resource path="res://fonts/caviar_dreams/CaviarDreams_Italic.tres" type="DynamicFont" id=2]
+[ext_resource path="res://fonts/caviar_dreams/CaviarDreams_Bold.tres" type="DynamicFont" id=3]
+[ext_resource path="res://fonts/caviar_dreams/CaviarDreams.tres" type="DynamicFont" id=4]
+[ext_resource path="res://PauseDialog.tscn" type="PackedScene" id=5]
+[ext_resource path="res://full_bg.png" type="Texture" id=6]
+[ext_resource path="res://Room.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Player.gd" type="Script" id=8]
+[ext_resource path="res://static_ghost.png" type="Texture" id=9]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[node name="Main" type="Node"]
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="GUI"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -340.0
+
+[node name="RoomDescription" type="RichTextLabel" parent="GUI/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 333.0
+margin_bottom = 593.0
+custom_fonts/bold_italics_font = ExtResource( 1 )
+custom_fonts/italics_font = ExtResource( 2 )
+custom_fonts/bold_font = ExtResource( 3 )
+custom_fonts/normal_font = ExtResource( 4 )
+bbcode_enabled = true
+
+[node name="PauseDialog" parent="GUI" instance=ExtResource( 5 )]
+visible = false
+
+[node name="Level" type="Node2D" parent="."]
+
+[node name="Background" type="Sprite" parent="Level"]
+texture = ExtResource( 6 )
+
+[node name="Livingroom" parent="Level" instance=ExtResource( 7 )]
+position = Vector2( 651.993, -465.976 )
+description = "Laughter and music tinkle faintly in the background as you inhale the life of this room."
+
+[node name="Garage" parent="Level" instance=ExtResource( 7 )]
+position = Vector2( 733.968, 192.05 )
+description = "The smells of grease and wood fill the air, but the warm admiration it summons is shattered by the screech of a grinder."
+
+[node name="Allen's Room" parent="Level" instance=ExtResource( 7 )]
+position = Vector2( 55.9509, 738.035 )
+description = "You wrinkle your nose at the faint smell of sweat and neglected laundry, and you instinctively watch your step before realizing that sharp objects cannot hurt feet you don't have."
+
+[node name="Kitchen" parent="Level" instance=ExtResource( 7 )]
+position = Vector2( -675.948, 318.127 )
+description = "The warm aroma of baking dances on a gentle breeze.  A soft growl rumbles forth from your empty abdomen."
+
+[node name="Library" parent="Level" instance=ExtResource( 7 )]
+position = Vector2( -608.904, -556.104 )
+description = "The sounds of stern shushings permiate the musty air, and a million words flicker through your eyes."
+
+[node name="Bedroom" parent="Level" instance=ExtResource( 7 )]
+position = Vector2( 1.94613, -747.895 )
+description = "Snores, springs, and other things murmur in the back of your mind.  This room smells content."
+
+[node name="Player" type="KinematicBody2D" parent="."]
+position = Vector2( 47.3387, 46.0131 )
+script = ExtResource( 8 )
+
+[node name="Sprite" type="Sprite" parent="Player"]
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+offset = Vector2( 170, 0 )
+current = true
+drag_margin_h_enabled = false
+drag_margin_v_enabled = false
+__meta__ = {
+"_edit_lock_": true
+}
