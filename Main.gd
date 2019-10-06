@@ -1,5 +1,6 @@
 extends Node
 
+onready var victory_timer = find_node("VictoryTimer")
 onready var victory = get_node("/root").find_node("VictoryDialog", true, false)
 onready var failure = get_node("/root").find_node("FailureDialog", true, false)
 onready var inventory : GridContainer = get_node("/root").find_node("Inventory", true, false)
@@ -17,7 +18,7 @@ func apply_item(item):
 	failures = clamp(failures - 1, 0, max_failures)
 	player.play("yay")
 	if items_applied == total_item_count:
-		victory.activate()
+		victory_timer.start()
 
 func wrong_item(item):
 	failures += 1
@@ -28,3 +29,6 @@ func wrong_item(item):
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		inventory.unfocus()
+
+func _on_VictoryTimer_timeout():
+	victory.activate()

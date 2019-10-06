@@ -48,3 +48,7 @@ visible = false
 
 [node name="Player" parent="." instance=ExtResource( 7 )]
 position = Vector2( 41.9001, 41.165 )
+
+[node name="VictoryTimer" type="Timer" parent="."]
+one_shot = true
+[connection signal="timeout" from="VictoryTimer" to="." method="_on_VictoryTimer_timeout"]

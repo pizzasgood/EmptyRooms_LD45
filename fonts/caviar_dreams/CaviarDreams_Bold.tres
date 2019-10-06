@@ -3,4 +3,5 @@
 [ext_resource path="res://fonts/caviar_dreams/CaviarDreams_Bold.ttf" type="DynamicFontData" id=1]
 
 [resource]
+size = 64
 font_data = ExtResource( 1 )
