@@ -1,17 +1,12 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Inventory.tscn" type="PackedScene" id=2]
 [ext_resource path="res://PauseDialog.tscn" type="PackedScene" id=3]
 [ext_resource path="res://VictoryDialog.tscn" type="PackedScene" id=4]
 [ext_resource path="res://FailureDialog.tscn" type="PackedScene" id=5]
-[ext_resource path="res://full_bg.png" type="Texture" id=6]
-[ext_resource path="res://Room.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Item.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Player.gd" type="Script" id=9]
-[ext_resource path="res://static_ghost.png" type="Texture" id=10]
-
-[sub_resource type="CircleShape2D" id=1]
+[ext_resource path="res://Level1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=7]
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
@@ -40,6 +35,7 @@ align = 1
 autowrap = true
 
 [node name="Inventory" parent="GUI" instance=ExtResource( 2 )]
+visible = false
 
 [node name="PauseDialog" parent="GUI" instance=ExtResource( 3 )]
 visible = false
@@ -48,143 +44,7 @@ visible = false
 
 [node name="FailureDialog" parent="GUI" instance=ExtResource( 5 )]
 
-[node name="Level" type="Node2D" parent="."]
-editor/display_folded = true
+[node name="Level" parent="." instance=ExtResource( 6 )]
 
-[node name="Background" type="Sprite" parent="Level"]
-texture = ExtResource( 6 )
-
-[node name="Livingroom" parent="Level" instance=ExtResource( 7 )]
-position = Vector2( 651.993, -465.976 )
-description = "Laughter and music tinkle faintly in the background as you inhale the life of this room."
-
-[node name="Garage" parent="Level" instance=ExtResource( 7 )]
-position = Vector2( 733.968, 192.05 )
-description = "The smells of grease and wood fill the air, but the warm admiration they summon is shattered by the screech of a grinder."
-
-[node name="Allen" parent="Level" instance=ExtResource( 7 )]
-position = Vector2( 55.9509, 738.035 )
-description = "You wrinkle your nose at the faint smell of sweat and neglected laundry, and you instinctively watch your step before realizing that sharp objects cannot hurt feet you don't have."
-
-[node name="Kitchen" parent="Level" instance=ExtResource( 7 )]
-position = Vector2( -675.948, 318.127 )
-description = "The warm aroma of baking dances on a gentle breeze.  A soft growl rumbles forth from your empty abdomen."
-
-[node name="Library" parent="Level" instance=ExtResource( 7 )]
-position = Vector2( -608.904, -556.104 )
-description = "The sounds of stern shushings permiate the musty air, and a million words flicker through your eyes."
-
-[node name="Bedroom" parent="Level" instance=ExtResource( 7 )]
-position = Vector2( 1.94613, -747.895 )
-description = "Snores, springs, and other things murmur in the back of your mind.  This room smells content."
-
-[node name="Items" type="Node" parent="Level"]
-editor/display_folded = true
-
-[node name="Bookshelf" parent="Level/Items" instance=ExtResource( 8 )]
-position = Vector2( -22.1814, -47.0185 )
-description = "A bookshelf full of well-read stories."
-room = NodePath("../../Library")
-
-[node name="Cart" parent="Level/Items" instance=ExtResource( 8 )]
-position = Vector2( 23.5352, -45.9693 )
-description = "A cart stacked high with books."
-room = NodePath("../../Library")
-
-[node name="Desk" parent="Level/Items" instance=ExtResource( 8 )]
-position = Vector2( 25.8665, -69.8973 )
-description = "A heavy desk with a shiny brass nameplate reading \"Mrs. Hartman.\""
-room = NodePath("../../Library")
-
-[node name="Basketball Trophy" parent="Level/Items" instance=ExtResource( 8 )]
-position = Vector2( 75.1607, -62.4151 )
-description = "A children's basketball trophy.  It is sticky and smells of orange juice."
-room = NodePath("../../Allen")
-
-[node name="Toothicus" parent="Level/Items" instance=ExtResource( 8 )]
-position = Vector2( 32.0283, -98.0654 )
-description = "A well-loved alligator plushie."
-room = NodePath("../../Allen")
-
-[node name="Model Police Station" parent="Level/Items" instance=ExtResource( 8 )]
-position = Vector2( -4.06207, -21.4833 )
-description = "A police station made of LEGO bricks.  The colors almost match!"
-room = NodePath("../../Allen")
-
-[node name="Jewelry Box" parent="Level/Items" instance=ExtResource( 8 )]
-position = Vector2( 88.8047, -89.703 )
-description = "A handcrafted jewelry box engraved with images of leaves.  A large scratch mars the underside, with a sloppy note in marker beside it.  \"Oops!  Sorry, Mom!\""
-room = NodePath("../../Bedroom")
-
-[node name="Orc Costume" parent="Level/Items" instance=ExtResource( 8 )]
-position = Vector2( -7.14297, -68.5769 )
-description = "This orc costume is sized for a man and smells faintly of pine and bug repellant."
-room = NodePath("../../Bedroom")
-
-[node name="Synthesizer" parent="Level/Items" instance=ExtResource( 8 )]
-position = Vector2( 54.4748, -50.5317 )
-description = "Stroking the keys feels like speaking; body or not, you have found your voice."
-room = NodePath("../../Livingroom")
-
-[node name="Handwritten Lyrics" parent="Level/Items" instance=ExtResource( 8 )]
-position = Vector2( -0.541077, -94.1042 )
-description = "If you're going to play in Arnor, you gotta have a hobbit in the band.
-Gondorians eat a lot but not to a Michel Delving man!
-So load those plates with food and put tobacco in our pipes.
-If you're gonna play in Arnor, you gotta have a hobbit in the band."
-room = NodePath("../../Livingroom")
-
-[node name="Family Portrait" parent="Level/Items" instance=ExtResource( 8 )]
-position = Vector2( -32.2302, -8.2795 )
-description = "This portrait features a woman dressed as a sexy bespectacled elf, a hairy green man with tusks and a chainsaw, and Spider-Man."
-room = NodePath("../../Livingroom")
-
-[node name="Recipe Book" parent="Level/Items" instance=ExtResource( 8 )]
-position = Vector2( -35.7512, -83.5412 )
-description = "The pages of this book are yellowed and occasionally stained with food.  A recipe for pumpkin cookies is dog-eared."
-room = NodePath("../../Kitchen")
-
-[node name="Apron" parent="Level/Items" instance=ExtResource( 8 )]
-position = Vector2( 57.9958, -82.2208 )
-description = "<3 World's Best Mom! <3"
-room = NodePath("../../Kitchen")
-
-[node name="Motorcycle" parent="Level/Items" instance=ExtResource( 8 )]
-position = Vector2( 50.9538, -23.2438 )
-description = "This motorcycle has been heavily customized to resemble a dragon.  Many long hugs have been had upon this wondrous beast."
-room = NodePath("../../Garage")
-
-[node name="Toolbox" parent="Level/Items" instance=ExtResource( 8 )]
-position = Vector2( 81.3225, -33.8069 )
-description = "The sawdust coating this toolbox smells like love."
-room = NodePath("../../Garage")
-
-[node name="Coffee Mug" parent="Level/Items" instance=ExtResource( 8 )]
-position = Vector2( 100.688, -61.5349 )
-description = "A poem about fatherhood is painted on the side of the mug."
-room = NodePath("../../Garage")
-
-[node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 47.3387, 46.0131 )
-script = ExtResource( 9 )
-
-[node name="Sprite" type="Sprite" parent="Player"]
-texture = ExtResource( 10 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-offset = Vector2( 170, 0 )
-current = true
-drag_margin_h_enabled = false
-drag_margin_v_enabled = false
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="Player" parent="." instance=ExtResource( 7 )]
+position = Vector2( 41.9001, 41.165 )

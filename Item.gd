@@ -9,7 +9,7 @@ export(NodePath) var room
 onready var room_node = get_node(room)
 
 func _ready():
-	pass
+	room_node.outstanding_items += 1
 
 
 func _on_Area2D_body_entered(body):

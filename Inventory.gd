@@ -16,7 +16,7 @@ onready var main = get_node("/root").find_node("Main", true, false)
 var raw_items = []
 
 func _ready():
-	pass
+	visible = true
 
 func size():
 	return raw_items.size()
@@ -39,13 +39,15 @@ func get_item(idx):
 	return raw_items[idx]
 
 func use_item(idx):
+	var item = get_item(idx)
 	if player.get_room():
-		if player.get_room().name == get_item(idx).room_node.name:
+		if player.get_room().name == item.room_node.name:
+			item.room_node.found_item(item)
 			snd_place.play()
-			main.apply_item(get_item(idx))
+			main.apply_item(item)
 			remove_item(idx)
 		else:
-			main.wrong_item(get_item(idx))
+			main.wrong_item(item)
 			snd_error.play()
 	else:
 		snd_error.play()
