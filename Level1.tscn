@@ -1,6 +1,6 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://full_bg.png" type="Texture" id=1]
+[ext_resource path="res://tex/full_bg.png" type="Texture" id=1]
 [ext_resource path="res://Room.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Item.tscn" type="PackedScene" id=3]
 [ext_resource path="res://tex/bookcase.png" type="Texture" id=4]
@@ -19,91 +19,93 @@
 [ext_resource path="res://tex/apron.png" type="Texture" id=17]
 [ext_resource path="res://tex/motorcycle.png" type="Texture" id=18]
 [ext_resource path="res://tex/toolbox.png" type="Texture" id=19]
+[ext_resource path="res://Hospital.tscn" type="PackedScene" id=20]
 
 [node name="Level1" type="Node2D"]
 
 [node name="Background" type="Sprite" parent="."]
+position = Vector2( -40, -59 )
 texture = ExtResource( 1 )
 
 [node name="Livingroom" parent="." instance=ExtResource( 2 )]
-position = Vector2( 663.968, -469.127 )
+position = Vector2( 623.968, -528.127 )
 description = "Laughter and music tinkle faintly in the background as you inhale the life of this room."
 
 [node name="Garage" parent="." instance=ExtResource( 2 )]
-position = Vector2( 736.363, 188.458 )
-description = "The smells of grease and wood fill the air, but the warm admiration they summon is shattered by the screech of a grinder."
+position = Vector2( 696.363, 129.458 )
+description = "The smells of grease and wood fill the air, and a sense of untidiness pervades the area.  You wince at the remembered sound of screeching power tools."
 
 [node name="Son" parent="." instance=ExtResource( 2 )]
-position = Vector2( 42.7787, 737.436 )
+position = Vector2( 2.77869, 678.436 )
 description = "You wrinkle your nose at the faint smell of sweat and neglected laundry, and you instinctively watch your step before realizing that sharp objects cannot hurt feet you don't have."
 
 [node name="Kitchen" parent="." instance=ExtResource( 2 )]
-position = Vector2( -682.534, 317.528 )
-description = "The warm aroma of baking dances on a gentle breeze.  A soft growl rumbles forth from your empty abdomen."
+position = Vector2( -722.534, 258.528 )
+description = "The warm aroma of baking dances on a gentle breeze.  A soft growl rumbles forth from your missing abdomen."
 
 [node name="Library" parent="." instance=ExtResource( 2 )]
-position = Vector2( -620.904, -560.104 )
-description = "The sounds of stern shushings permiate the musty air, and a million words flicker through your eyes."
+position = Vector2( -660.904, -619.104 )
+description = "The sounds of stern shushings permiate the musty air, and a million words flicker through your eyes.  You're filled with a sense of responsibility."
 
 [node name="Bedroom" parent="." instance=ExtResource( 2 )]
-position = Vector2( 20.507, -752.086 )
-description = "Snores, springs, and other things murmur in the back of your mind.  This room smells content."
+position = Vector2( -19.4929, -811.086 )
+description = "Snores, bedsprings, and other things murmur in the back of your mind.  This room smells content, and though you can't see it, you're confident it has a positively cavernous closet."
 
-[node name="Items" type="Node" parent="."]
+[node name="Items" type="Node2D" parent="."]
 
 [node name="Bookshelf" parent="Items" instance=ExtResource( 3 )]
-position = Vector2( -22.1814, -47.0185 )
-description = "A bookshelf full of well-read stories."
+position = Vector2( 567.459, -569.515 )
+description = "A bookshelf full of well-read stories and an occasional bit of gum."
 room = NodePath("../../Library")
 
 [node name="Cart" parent="Items" instance=ExtResource( 3 )]
-position = Vector2( 23.5352, -45.9693 )
-description = "A cart stacked high with books."
+position = Vector2( -87.175, 718.011 )
+description = "A cart stacked high with books.  None of the wheels squeak, thank you very much!"
 room = NodePath("../../Library")
 
 [node name="Desk" parent="Items" instance=ExtResource( 3 )]
-position = Vector2( 25.8665, -69.8973 )
+position = Vector2( 615.114, 180.061 )
 description = "A heavy desk with a shiny brass nameplate reading \"Mrs. Hartman.\""
 room = NodePath("../../Library")
 
 [node name="Trophy" parent="Items" instance=ExtResource( 3 )]
-position = Vector2( 75.1607, -62.4151 )
+position = Vector2( -718.873, -598.594 )
 description = "A child's basketball trophy.  It's sticky and smells of root beer, and it instills you with pride."
 room = NodePath("../../Son")
 
 [node name="Toothicus" parent="Items" instance=ExtResource( 3 )]
-position = Vector2( 32.0283, -98.0654 )
-description = "A well-loved alligator plushie."
+position = Vector2( -705.031, -667.596 )
+description = "A well-loved alligator plushie.  You're honestly kind of tired of how often you've had to stitch it back together."
 room = NodePath("../../Son")
 
 [node name="Model Police Station" parent="Items" instance=ExtResource( 3 )]
-position = Vector2( -4.06207, -21.4833 )
+position = Vector2( 540, -480 )
 description = "A police station made of LEGO bricks.  The colors almost match!"
 room = NodePath("../../Son")
 
 [node name="Jewelry Box" parent="Items" instance=ExtResource( 3 )]
-position = Vector2( 88.8047, -89.703 )
-description = "A handcrafted jewelry box engraved with images of leaves.  A large scratch mars the underside, with a sloppy note in marker beside it.  \"Oops!  Sorry, Mom!\""
+position = Vector2( -57.7662, 640 )
+description = "A handcrafted jewelry box engraved with images of leaves.  The side features a doodle in crayon drawn by a hapless invader to your sanctum."
 room = NodePath("../../Bedroom")
 
 [node name="Engagement Ring" parent="Items" instance=ExtResource( 3 )]
-position = Vector2( 66.2263, -106.428 )
+position = Vector2( 655.489, 89.9928 )
 description = "One Ring to bare my heart, One Ring to shine her,
 One Ring to win her heart and in a wedding bind her."
 room = NodePath("../../Bedroom")
 
 [node name="Orc Costume" parent="Items" instance=ExtResource( 3 )]
-position = Vector2( -7.14297, -68.5769 )
-description = "This orc costume is sized for a man and smells faintly of pine and bug repellant."
+position = Vector2( 747.343, 178.786 )
+description = "This orc costume is sized for a man and smells faintly of bug repellant."
 room = NodePath("../../Bedroom")
 
 [node name="Synthesizer" parent="Items" instance=ExtResource( 3 )]
-position = Vector2( 54.4748, -50.5317 )
+position = Vector2( -646.606, 218.532 )
 description = "Stroking the keys feels like speaking; body or not, you have found your voice."
 room = NodePath("../../Livingroom")
 
 [node name="Handwritten Lyrics" parent="Items" instance=ExtResource( 3 )]
-position = Vector2( -0.541077, -94.1042 )
+position = Vector2( 68.53, 633.301 )
 description = "If you're going to play in Arnor, you gotta have a hobbit in the band.
 Gondorians eat a lot but not to a Michel Delving man!
 So load those plates with food and put tobacco in our pipes.
@@ -111,108 +113,111 @@ If you're gonna play in Arnor, you gotta have a hobbit in the band."
 room = NodePath("../../Livingroom")
 
 [node name="Family Portrait" parent="Items" instance=ExtResource( 3 )]
-position = Vector2( -32.2302, -8.2795 )
-description = "This portrait features a woman dressed as a sexy bespectacled elf, a beefy orc with a chainsaw, and Spider-Man."
+position = Vector2( -69.9238, -850 )
+description = "This portrait features a sexy bespectacled elf, a beefy orc with a chainsaw, and Spider-Man."
 room = NodePath("../../Livingroom")
 
 [node name="Recipe Book" parent="Items" instance=ExtResource( 3 )]
-position = Vector2( -35.7512, -83.5412 )
+position = Vector2( -614.221, -575.673 )
 description = "The pages of this book are yellowed and occasionally stained with food.  A recipe for pumpkin cookies is dog-eared."
 room = NodePath("../../Kitchen")
 
 [node name="Apron" parent="Items" instance=ExtResource( 3 )]
-position = Vector2( 57.9958, -82.2208 )
+position = Vector2( 650, -488 )
 description = "<3 World's Best Mom! <3"
 room = NodePath("../../Kitchen")
 
 [node name="Motorcycle" parent="Items" instance=ExtResource( 3 )]
-position = Vector2( 50.9538, -23.2438 )
-description = "This motorcycle has been heavily customized to resemble a dragon.  Many long hugs have been had upon this wondrous beast, but recently there was some screaming."
+position = Vector2( 15.2044, -767.685 )
+description = "This motorcycle has been heavily customized to resemble a dragon.  Many long hugs have been had upon the wondrous beast, but recently there was some screaming, and not the good kind."
 room = NodePath("../../Garage")
 
 [node name="Toolbox" parent="Items" instance=ExtResource( 3 )]
-position = Vector2( 81.3225, -33.8069 )
+position = Vector2( -770, 220 )
 description = "The sawdust coating this toolbox smells like love.  The mug atop it sports a handpainted poem in a femine hand."
 room = NodePath("../../Garage")
 
-[node name="Images" type="Node" parent="."]
+[node name="Images" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Img Bookshelf" type="Sprite" parent="Images"]
 visible = false
-position = Vector2( -578.51, -649.657 )
+position = Vector2( -613.319, -718.657 )
 texture = ExtResource( 4 )
 
 [node name="Img Cart" type="Sprite" parent="Images"]
 visible = false
-position = Vector2( -620, -533 )
+position = Vector2( -659, -602 )
 texture = ExtResource( 5 )
 
 [node name="Img Desk" type="Sprite" parent="Images"]
 visible = false
-position = Vector2( -723, -647 )
+position = Vector2( -756.611, -711.21 )
 texture = ExtResource( 6 )
 
 [node name="Img Trophy" type="Sprite" parent="Images"]
 visible = false
-position = Vector2( 42.7601, 725.607 )
+position = Vector2( 3.76013, 656.607 )
 texture = ExtResource( 7 )
 
 [node name="Img Toothicus" type="Sprite" parent="Images"]
 visible = false
-position = Vector2( 119.628, 709.297 )
+position = Vector2( 80.628, 640.297 )
 texture = ExtResource( 8 )
 
 [node name="Img Model Police Station" type="Sprite" parent="Images"]
 visible = false
-position = Vector2( -12.5777, 748.124 )
+position = Vector2( -51.5777, 679.124 )
 texture = ExtResource( 9 )
 
 [node name="Img Jewelry Box" type="Sprite" parent="Images"]
 visible = false
-position = Vector2( 106.061, -796.622 )
+position = Vector2( 58.6786, -865.622 )
 texture = ExtResource( 10 )
 
 [node name="Img Engagement Ring" type="Sprite" parent="Images"]
 visible = false
-position = Vector2( 107.466, -821.619 )
+position = Vector2( 62.3189, -890.619 )
 texture = ExtResource( 11 )
 
 [node name="Img Orc Costume" type="Sprite" parent="Images"]
 visible = false
-position = Vector2( -54.675, -832.287 )
+position = Vector2( -93.675, -901.287 )
 texture = ExtResource( 12 )
 
 [node name="Img Synthesizer" type="Sprite" parent="Images"]
 visible = false
-position = Vector2( 657.908, -496.453 )
+position = Vector2( 631.738, -557.529 )
 texture = ExtResource( 13 )
 
 [node name="Img Handwritten Lyrics" type="Sprite" parent="Images"]
 visible = false
-position = Vector2( 665.32, -520.42 )
+position = Vector2( 637.641, -579.232 )
 texture = ExtResource( 14 )
 
 [node name="Img Family Portrait" type="Sprite" parent="Images"]
 visible = false
-position = Vector2( 586.075, -577.052 )
+position = Vector2( 573.612, -632.12 )
 texture = ExtResource( 15 )
 
 [node name="Img Recipe Book" type="Sprite" parent="Images"]
 visible = false
-position = Vector2( -640.148, 330.935 )
+position = Vector2( -679.148, 261.935 )
 texture = ExtResource( 16 )
 
 [node name="Img Apron" type="Sprite" parent="Images"]
 visible = false
-position = Vector2( -732.157, 306.698 )
+position = Vector2( -771.157, 237.698 )
 texture = ExtResource( 17 )
 
 [node name="Img Motorcycle" type="Sprite" parent="Images"]
 visible = false
-position = Vector2( 719.71, 180.981 )
+position = Vector2( 680.71, 111.981 )
 texture = ExtResource( 18 )
 
 [node name="Img Toolbox" type="Sprite" parent="Images"]
 visible = false
-position = Vector2( 804.249, 115.336 )
+position = Vector2( 765.249, 46.336 )
 texture = ExtResource( 19 )
+
+[node name="Hospital" parent="." instance=ExtResource( 20 )]

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/unknown_item.png-eb9a8b2533ceeb8660e6f4cc2374b25a.stex"
+path="res://.import/hospital_background.png-ff0e049bf500983a53d1125fd2d977b2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://unknown_item.png"
-dest_files=[ "res://.import/unknown_item.png-eb9a8b2533ceeb8660e6f4cc2374b25a.stex" ]
+source_file="res://tex/hospital_background.png"
+dest_files=[ "res://.import/hospital_background.png-ff0e049bf500983a53d1125fd2d977b2.stex" ]
 
 [params]
 
