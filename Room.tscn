@@ -2,8 +2,8 @@
 
 [ext_resource path="res://Room.gd" type="Script" id=1]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 96, 64 )
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 149, -65, 93, 70, -164, 70, -107, -65 )
 
 [node name="Room" type="Node2D" groups=[
 "Rooms",

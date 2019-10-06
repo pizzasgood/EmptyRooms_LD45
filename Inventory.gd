@@ -42,7 +42,7 @@ func use_item(idx):
 	var item = get_item(idx)
 	if player.get_room():
 		if player.get_room().name == item.room_node.name:
-			item.room_node.found_item(item)
+			item.resolve()
 			snd_place.play()
 			main.apply_item(item)
 			remove_item(idx)
