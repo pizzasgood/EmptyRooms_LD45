@@ -19,14 +19,15 @@ margin_right = 205.0
 margin_bottom = 185.0
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+margin_top = 2.0
 margin_right = 410.0
-margin_bottom = 370.0
+margin_bottom = 367.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 403.0
-margin_bottom = 363.0
+margin_bottom = 358.0
 
 [node name="Title" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer"]
 margin_right = 396.0
@@ -44,46 +45,30 @@ stretch_mode = 6
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer"]
 margin_top = 250.0
 margin_right = 396.0
-margin_bottom = 338.0
+margin_bottom = 333.0
 custom_constants/separation = 32
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer"]
-margin_left = 36.0
-margin_right = 154.0
-margin_bottom = 88.0
+margin_left = 74.0
+margin_right = 115.0
+margin_bottom = 83.0
 
 [node name="Start" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_right = 118.0
+margin_right = 41.0
 margin_bottom = 20.0
 text = "Start"
 
 [node name="Exit" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 24.0
-margin_right = 118.0
+margin_right = 41.0
 margin_bottom = 44.0
 text = "Exit"
 
-[node name="Music" type="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 48.0
-margin_right = 118.0
-margin_bottom = 88.0
-
-[node name="Label" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Music"]
-margin_top = 13.0
-margin_right = 38.0
-margin_bottom = 27.0
-text = "Music"
-
-[node name="MusicToggle" type="CheckButton" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Music"]
-margin_left = 42.0
-margin_right = 118.0
-margin_bottom = 40.0
-
 [node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer"]
-margin_left = 186.0
-margin_right = 360.0
-margin_bottom = 88.0
+margin_left = 147.0
+margin_right = 321.0
+margin_bottom = 83.0
 
 [node name="ControlsTitle" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 margin_right = 174.0
@@ -101,11 +86,10 @@ F: try placing selected item
 ESC: open the menu"
 
 [node name="Copyright" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer"]
-margin_top = 342.0
+margin_top = 337.0
 margin_right = 396.0
-margin_bottom = 356.0
+margin_bottom = 351.0
 text = "© 2019 Pizzasgood"
 align = 2
 [connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
-[connection signal="toggled" from="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/Music/MusicToggle" to="." method="_on_MusicToggle_toggled"]

@@ -17,6 +17,3 @@ func _on_Exit_pressed():
 	else:
 		get_tree().quit()
 
-
-func _on_MusicToggle_toggled(button_pressed):
-	pass # Replace with function body.

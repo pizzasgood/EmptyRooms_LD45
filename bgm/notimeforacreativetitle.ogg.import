@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/notimeforacreativetitle.ogg-547f3a7f405a49323eb4d8ff9c21c95e.oggstr"
+
+[deps]
+
+source_file="res://bgm/notimeforacreativetitle.ogg"
+dest_files=[ "res://.import/notimeforacreativetitle.ogg-547f3a7f405a49323eb4d8ff9c21c95e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

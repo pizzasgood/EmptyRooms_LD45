@@ -51,6 +51,7 @@ text = "Music"
 margin_left = 42.0
 margin_right = 118.0
 margin_bottom = 40.0
+pressed = true
 
 [node name="Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )

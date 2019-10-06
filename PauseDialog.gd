@@ -3,6 +3,7 @@ extends CenterContainer
 onready var resume_button : Button = find_node("Resume")
 onready var exit_button : Button = find_node("Exit")
 onready var music_toggle : CheckButton = find_node("MusicToggle")
+onready var bgm : AudioStreamPlayer = get_node("/root").find_node("BGM", true, false)
 onready var sound : AudioStreamPlayer = find_node("Sound")
 
 func _ready():
@@ -20,6 +21,7 @@ func _on_Exit_pressed():
 
 func _on_Resume_pressed():
 	sound.play()
+	music_toggle.pressed = bgm.playing
 	visible = false
 	get_tree().paused = false
 
@@ -29,7 +31,7 @@ func _unhandled_input(event):
 			_on_Resume_pressed()
 		else:
 			sound.play()
-			#music_toggle.pressed = Checkpoints.music
+			music_toggle.pressed = bgm.playing
 			visible = true
 			resume_button.grab_focus()
 			get_tree().paused = true
@@ -44,6 +46,4 @@ func _unhandled_input(event):
 			get_tree().set_input_as_handled()
 
 func _on_MusicToggle_toggled(button_pressed):
-	#Checkpoints.music = music_toggle.pressed
-	#get_node("/root/main/BGM").playing = Checkpoints.music
-	pass
+	bgm.playing = music_toggle.pressed
